@@ -1,7 +1,9 @@
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -65,5 +67,33 @@ public class FunctionsUtil {
 		return IntStream.rangeClosed(start, number).filter(a->isPrime(a)).boxed().collect(Collectors.toList());
 		
 	}
+	
+	static int findMaxOccurenceInArray(List<Integer> arr) {
+		
+		return Collections.max(arr.stream()
+				.collect(Collectors.groupingBy(
+						Function.identity(),
+						Collectors.counting()
+				))
+				.entrySet(),Map.Entry.comparingByValue()).getKey();
+
+    }
+	
+	static int sumOfList(List<Integer> l) {
+		return l.stream().mapToInt(Integer::intValue).sum();
+	}
+	
+	static List<Integer> arrayToList(int[] arr){
+		return Arrays.stream(arr).boxed().collect(Collectors.toList());
+	}
+	
+	static int[] listToarray(List<Integer> list){
+		return list.stream().mapToInt(Integer::intValue).toArray();
+	}
+	
+	static Integer[][] TwoDlistToarray(List<List<Integer>> matrix) {
+		
+		return matrix.stream().map(a->a.stream().mapToInt(Integer::intValue).toArray()).toArray(Integer[][]::new);
+    }
 
 }
