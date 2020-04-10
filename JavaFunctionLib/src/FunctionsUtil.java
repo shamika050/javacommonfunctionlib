@@ -1,8 +1,12 @@
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -95,5 +99,20 @@ public class FunctionsUtil {
 		
 		return matrix.stream().map(a->a.stream().mapToInt(Integer::intValue).toArray()).toArray(Integer[][]::new);
     }
+	
+	static boolean isPalindrom(String s){
+		Queue<Character> q = new LinkedList<Character>();
+		Deque<Character> stack = new ArrayDeque<Character>();
+		for (Character character : s.toCharArray()) {
+			q.add(character);
+			stack.push(character);
+		}
+		for (int i = 0; i < s.length()/2; i++) {
+			if(q.poll() != stack.pop()) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

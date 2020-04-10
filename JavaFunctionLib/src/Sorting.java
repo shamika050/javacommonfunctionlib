@@ -24,6 +24,27 @@ class Student{
 //Complete the code
 public class Sorting
 {
+	public void bubbleSort(int[] arr) {
+		int numSwaps = 0;
+		for(int i = 0;i < arr.length - 1;i++) {
+			int numberOfSwaps = 0;
+			for(int j = 0;j < arr.length - 1;j++) {
+				if(arr[j] > arr[j+1]) {
+					int x = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = x;
+					numberOfSwaps++;
+				}
+			}
+			System.out.println();
+			numSwaps= numSwaps+numberOfSwaps;
+			if (numberOfSwaps == 0) {
+		        break;
+		    }
+		}
+		
+	}
+	
 	public static void main(String[] args){
 		System.out.println(3.75 - 3.75);
 		Scanner in = new Scanner(System.in);
