@@ -6,10 +6,10 @@ public class LInkedLists {
 	
 	static class Node{
 		Node next;
-		Integer value;
-		public Node(Integer value) {
+		Integer data;
+		public Node(Integer data) {
 			this.next = null;
-			this.value = value;
+			this.data = data;
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class LInkedLists {
 	   }
 	   while(temp != null) {
 		   Node tempIn = temp;
-		   Integer value = tempIn.value;
+		   Integer value = tempIn.data;
 		   if(temp.next ==  null) {
 				break;
 		   }
@@ -46,10 +46,11 @@ public class LInkedLists {
 			   if(tempIn.next ==  null) {
 					break;
 			   }
-			   if(tempIn.next.value == value){
-				   tempIn.next = tempIn.next;
+			   if(tempIn.next.data == value){
+				   tempIn.next = tempIn.next.next;
+			   }else {
+				   tempIn = tempIn.next;
 			   }
-			   tempIn = tempIn.next;
 			   
 		   }
 		   temp = temp.next;
